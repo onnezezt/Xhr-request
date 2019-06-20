@@ -4,7 +4,6 @@ const webpack = require('webpack')
 
 module.exports = {
   mode: 'development',
-
   /**
    * 在 examples 目录下建多个子目录
    * 每个子目录的下会创建一个 app.ts
