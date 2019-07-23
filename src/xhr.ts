@@ -1,7 +1,11 @@
 import { AxiosRequestConfig, AxiosPromise, AxiosResponse } from './types'
 import { parseHeaders } from './helpers/headers'
 import { createError } from './helpers/error'
-
+/**
+ * 发送XMLHttpRequest逻辑入口
+ * @param  {AxiosRequestConfig} config
+ * @returns AxiosPromise
+ */
 export default function xhr(config: AxiosRequestConfig): AxiosPromise {
   return new Promise((resolve, reject) => {
     const { data = null, url, method = 'get', headers, responseType, timeout } = config

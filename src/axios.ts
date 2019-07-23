@@ -4,6 +4,11 @@ import { processHeaders } from './helpers/headers'
 import { bulidURL } from './helpers/url'
 import xhr from './xhr'
 
+/**
+ * 入口
+ * @param  {AxiosRequestConfig} config
+ * @returns AxiosPromise
+ */
 function axios(config: AxiosRequestConfig): AxiosPromise {
   processConfig(config)
   return xhr(config).then(res => {
