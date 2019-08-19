@@ -64,3 +64,13 @@ export type Method =
   | 'PUT'
   | 'patch'
   | 'PATCH'
+
+export interface ResolvedFn<T = any> {
+  (val: T): T | Promise<T>
+}
+export interface RejectedFn<T = any> {
+  (val: T): T | Promise<T>
+}
+export interface AxiosInterceptorManager<T> {
+  use(resolved: ResolvedFn<T>, rejected?: RejectedFn): number
+}
