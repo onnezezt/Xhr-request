@@ -1,7 +1,16 @@
 const express = require('express')
 const router = express.Router()
 
-
+router.get('/more/get', function(req, res) {
+  res.json({
+    msg: `hello world`
+  })
+})
+router.get('/cancel/get', function(req, res) {
+  res.json({
+    msg: `hello world`
+  })
+})
 router.get('/simple/get', function(req, res) {
   res.json({
     msg: `hello world`
@@ -17,7 +26,7 @@ router.post('/base/post', function(req, res) {
 
 router.post('/base/buffer', function(req, res) {
   let msg = []
-  req.on('data', (chunk) => {
+  req.on('data', chunk => {
     if (chunk) {
       msg.push(chunk)
     }
