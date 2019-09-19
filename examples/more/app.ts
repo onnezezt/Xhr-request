@@ -19,3 +19,12 @@ axios
   .then(res => {
     console.log(res)
   })
+const instance = axios.create({
+  xsrfCookieName: 'XSRF-TOKEN-D',
+  xsrfHeaderName: 'X-XSRF-TOKEN-D'
+})
+
+// tslint:disable-next-line: no-floating-promises
+instance.get('/more/get').then(res => {
+  console.log(res)
+})
