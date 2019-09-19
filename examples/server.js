@@ -6,6 +6,7 @@ const webpackHotMiddleware = require('webpack-hot-middleware')
 const WebpackConfig = require('./webpack.config')
 const app = express()
 const compiler = webpack(WebpackConfig)
+const path = require('path')
 var routes = require('./routes')
 // const router = express.Router()
 
@@ -34,6 +35,15 @@ app.use(
     }
   })
 )
+const multipart = require('connect-multiparty')
+app.use(
+  multipart({
+    uploadDir: path.resolve(__dirname, 'upload-file')
+  })
+)
+
+
+
 const port = process.env.PORT || 8080
 
 module.exports = app.listen(port, () => {
