@@ -1,8 +1,46 @@
-import axios from '../../src/index'
+import axios, { AxiosError } from '../../src/index'
 import NProgress from 'nprogress'
 
 const instance = axios.create()
+// tslint:disable-next-line: no-floating-promises
+axios
+  .get('/more/304')
+  .then(res => {
+    console.log(res)
+  })
+  .catch((e: AxiosError) => {
+    console.log(e.message)
+  })
 
+axios
+  .get('/more/304', {
+    validateStatus(status) {
+      return status >= 200 && status < 400
+    }
+  })
+  .then(res => {
+    console.log(res)
+  })
+  .catch((e: AxiosError) => {
+    console.log(e.message)
+  })
+// tslint:disable-next-line: no-floating-promises
+axios
+  .post(
+    '/more/post',
+    {
+      a: 1
+    },
+    {
+      auth: {
+        username: 'Yee',
+        password: '123456'
+      }
+    }
+  )
+  .then(res => {
+    console.log(res)
+  })
 function calculatePercentage(loaded: number, total: number) {
   return Math.floor(loaded * 1.0) / total
 }
