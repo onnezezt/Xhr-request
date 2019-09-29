@@ -50,8 +50,8 @@
     "transform": {
       ".(ts|tsx)": "ts-jest"
     },
-    "testEnvironment": "node",
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "testEnvironment": "jsdom",
+    "testRegex": "/test/.*\\.(test|spec)\\.(ts)$",
     "moduleFileExtensions": [
       "ts",
       "tsx",
@@ -70,7 +70,11 @@
       }
     },
     "collectCoverageFrom": [
-      "src/*.{js,ts}"
+      "src/*.{js,ts}",
+      "src/**/*.{js,ts}"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/boot.ts"
     ]
   },
   "prettier": {
@@ -126,10 +130,13 @@
     "webpack-hot-middleware": "^2.24.3"
   },
   "dependencies": {
+    "@types/jasmine-ajax": "^3.3.0",
     "@types/nprogress": "^0.2.0",
     "atob": "^2.1.2",
     "connect-multiparty": "^2.2.0",
     "css-loader": "^3.2.0",
+    "jasmine-ajax": "^4.0.0",
+    "jasmine-core": "^3.5.0",
     "nprogress": "^0.2.0",
     "style-loader": "^1.0.0"
   }
